@@ -67,9 +67,8 @@ class SimpleTokenizer(object):
         merges = merges[1:49152-256-2+1]
         merges = [tuple(merge.split()) for merge in merges]
         vocab = list(bytes_to_unicode().values())
-        vocab = vocab + [v+'</w>' for v in vocab]
-        for merge in merges:
-            vocab.append(''.join(merge))
+        vocab += [f'{v}</w>' for v in vocab]
+        vocab.extend(''.join(merge) for merge in merges)
         vocab.extend(['<|startoftext|>', '<|endoftext|>'])
         self.encoder = dict(zip(vocab, range(len(vocab))))
         self.decoder = {v: k for k, v in self.encoder.items()}
@@ -80,11 +79,11 @@ class SimpleTokenizer(object):
     def bpe(self, token):
         if token in self.cache:
             return self.cache[token]
-        word = tuple(token[:-1]) + ( token[-1] + '</w>',)
+        word = tuple(token[:-1]) + (f'{token[-1]}</w>', )
         pairs = get_pairs(word)
 
         if not pairs:
-            return token+'</w>'
+            return f'{token}</w>'
 
         while True:
             bigram = min(pairs, key = lambda pair: self.bpe_ranks.get(pair, float('inf')))
@@ -98,7 +97,7 @@ class SimpleTokenizer(object):
                     j = word.index(first, i)
                     new_word.extend(word[i:j])
                     i = j
-                except:
+                except Exception:
                     new_word.extend(word[i:])
                     break
 
@@ -128,5 +127,8 @@ class SimpleTokenizer(object):
 
     def decode(self, tokens):
         text = ''.join([self.decoder[token] for token in tokens])
-        text = bytearray([self.byte_decoder[c] for c in text]).decode('utf-8', errors="replace").replace('</w>', ' ')
-        return text
+        return (
+            bytearray([self.byte_decoder[c] for c in text])
+            .decode('utf-8', errors="replace")
+            .replace('</w>', ' ')
+        )
