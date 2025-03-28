@@ -34,6 +34,7 @@ Here's a basic example demonstrating how to use CLIP to match an image with text
 ```python
 import torch
 from PIL import Image
+
 import clip
 
 # Check for GPU availability and set the device
@@ -84,27 +85,27 @@ The `clip` module provides the following core functions:
 
 #### `clip.available_models()`
 
--   **Description:** Returns a list of strings naming the available pre-trained CLIP models (e.g., `'RN50'`, `'ViT-B/32'`).
--   **Returns:** `List[str]`
+- **Description:** Returns a list of strings naming the available pre-trained CLIP models (e.g., `'RN50'`, `'ViT-B/32'`).
+- **Returns:** `List[str]`
 
 #### `clip.load(name, device=..., jit=False, download_root=None)`
 
--   **Description:** Loads a specified CLIP model and its associated TorchVision preprocessing transform. It automatically downloads the model weights if they are not found locally. The `name` can be one of the models returned by `clip.available_models()` or a path to a local checkpoint file (`.pt`).
--   **Arguments:**
-    -   `name` (str): The name of the model or path to a checkpoint.
-    -   `device` (str or `torch.device`, optional): The device to load the model onto ('cuda', 'cpu', etc.). Defaults to the first available CUDA device, otherwise CPU.
-    -   `jit` (bool, optional): If `True`, loads the JIT-scripted version of the model. Defaults to `False`.
-    -   `download_root` (str, optional): Path to download the model weights. Defaults to `~/.cache/clip`.
--   **Returns:** `Tuple[torch.nn.Module, Callable]` - A tuple containing the loaded `torch.nn.Module` and the preprocessing function.
+- **Description:** Loads a specified CLIP model and its associated TorchVision preprocessing transform. It automatically downloads the model weights if they are not found locally. The `name` can be one of the models returned by `clip.available_models()` or a path to a local checkpoint file (`.pt`).
+- **Arguments:**
+  - `name` (str): The name of the model or path to a checkpoint.
+  - `device` (str or `torch.device`, optional): The device to load the model onto ('cuda', 'cpu', etc.). Defaults to the first available CUDA device, otherwise CPU.
+  - `jit` (bool, optional): If `True`, loads the JIT-scripted version of the model. Defaults to `False`.
+  - `download_root` (str, optional): Path to download the model weights. Defaults to `~/.cache/clip`.
+- **Returns:** `Tuple[torch.nn.Module, Callable]` - A tuple containing the loaded `torch.nn.Module` and the preprocessing function.
 
 #### `clip.tokenize(text: Union[str, List[str]], context_length=77, truncate=False)`
 
--   **Description:** Tokenizes the input text into sequences suitable for the CLIP model. Handles padding and truncation.
--   **Arguments:**
-    -   `text` (Union[str, List[str]]): The text input(s) to tokenize. Can be a single string or a list of strings.
-    -   `context_length` (int, optional): The fixed sequence length for the model. Defaults to 77.
-    -   `truncate` (bool, optional): If `True`, truncates the text to fit the `context_length`. Defaults to `False`, raising an error if text exceeds length.
--   **Returns:** `torch.LongTensor` - A tensor of shape `(N, context_length)` containing the tokenized sequences, where `N` is the number of input strings.
+- **Description:** Tokenizes the input text into sequences suitable for the CLIP model. Handles padding and truncation.
+- **Arguments:**
+  - `text` (Union[str, List[str]]): The text input(s) to tokenize. Can be a single string or a list of strings.
+  - `context_length` (int, optional): The fixed sequence length for the model. Defaults to 77.
+  - `truncate` (bool, optional): If `True`, truncates the text to fit the `context_length`. Defaults to `False`, raising an error if text exceeds length.
+- **Returns:** `torch.LongTensor` - A tensor of shape `(N, context_length)` containing the tokenized sequences, where `N` is the number of input strings.
 
 ---
 
@@ -112,27 +113,27 @@ The `model` object returned by `clip.load()` has the following methods:
 
 #### `model.encode_image(image: Tensor)`
 
--   **Description:** Takes a batch of preprocessed images and returns their encoded [feature embeddings](https://www.ultralytics.com/glossary/feature-extraction).
--   **Arguments:**
-    -   `image` (`torch.Tensor`): A tensor of preprocessed images, typically of shape `(N, 3, H, W)`.
--   **Returns:** `torch.Tensor` - A tensor containing the image features, shape `(N, embedding_dim)`.
+- **Description:** Takes a batch of preprocessed images and returns their encoded [feature embeddings](https://www.ultralytics.com/glossary/feature-extraction).
+- **Arguments:**
+  - `image` (`torch.Tensor`): A tensor of preprocessed images, typically of shape `(N, 3, H, W)`.
+- **Returns:** `torch.Tensor` - A tensor containing the image features, shape `(N, embedding_dim)`.
 
 #### `model.encode_text(text: Tensor)`
 
--   **Description:** Takes a batch of tokenized text sequences and returns their encoded feature embeddings.
--   **Arguments:**
-    -   `text` (`torch.Tensor`): A tensor of tokenized text sequences, typically of shape `(N, context_length)`.
--   **Returns:** `torch.Tensor` - A tensor containing the text features, shape `(N, embedding_dim)`.
+- **Description:** Takes a batch of tokenized text sequences and returns their encoded feature embeddings.
+- **Arguments:**
+  - `text` (`torch.Tensor`): A tensor of tokenized text sequences, typically of shape `(N, context_length)`.
+- **Returns:** `torch.Tensor` - A tensor containing the text features, shape `(N, embedding_dim)`.
 
 #### `model(image: Tensor, text: Tensor)`
 
--   **Description:** Computes the cosine similarity scores between batches of image and text features.
--   **Arguments:**
-    -   `image` (`torch.Tensor`): A tensor of preprocessed images.
-    -   `text` (`torch.Tensor`): A tensor of tokenized text sequences.
--   **Returns:** `Tuple[torch.Tensor, torch.Tensor]` - Two tensors:
-    -   `logits_per_image`: Shape `(N, M)`, similarity scores for each image against each text.
-    -   `logits_per_text`: Shape `(M, N)`, similarity scores for each text against each image.
+- **Description:** Computes the cosine similarity scores between batches of image and text features.
+- **Arguments:**
+  - `image` (`torch.Tensor`): A tensor of preprocessed images.
+  - `text` (`torch.Tensor`): A tensor of tokenized text sequences.
+- **Returns:** `Tuple[torch.Tensor, torch.Tensor]` - Two tensors:
+  - `logits_per_image`: Shape `(N, M)`, similarity scores for each image against each text.
+  - `logits_per_text`: Shape `(M, N)`, similarity scores for each text against each image.
     The logits are scaled by `100`.
 
 ## ✨ More Examples
@@ -143,10 +144,11 @@ This example demonstrates CLIP's zero-shot classification capability on the [CIF
 
 ```python
 import os
+
 import torch
 from torchvision.datasets import CIFAR100
+
 import clip
-from PIL import Image
 
 # Ensure cache directory exists
 cache_dir = os.path.expanduser("~/.cache")
@@ -220,12 +222,14 @@ This example demonstrates how to perform a linear-probe evaluation. We extract C
 
 ```python
 import os
+
 import numpy as np
 import torch
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
 from torchvision.datasets import CIFAR100
 from tqdm import tqdm
+
 import clip
 
 # Ensure cache directory exists
@@ -244,6 +248,7 @@ except Exception as e:
     print(f"Error downloading or loading CIFAR100 dataset: {e}")
     exit()
 
+
 # Function to extract features from a dataset
 def get_features(dataset, model, device, batch_size=100):
     all_features = []
@@ -254,10 +259,11 @@ def get_features(dataset, model, device, batch_size=100):
         for images, labels in tqdm(dataloader, desc="Extracting features"):
             images = images.to(device)
             features = model.encode_image(images)
-            all_features.append(features.cpu()) # Move features to CPU to save GPU memory
+            all_features.append(features.cpu())  # Move features to CPU to save GPU memory
             all_labels.append(labels.cpu())
 
     return torch.cat(all_features).numpy(), torch.cat(all_labels).numpy()
+
 
 # Extract features for training and testing sets
 print("Extracting training features...")
@@ -269,7 +275,7 @@ test_features, test_labels = get_features(test_dataset, model, device)
 # Note: The hyperparameter C should ideally be tuned using a validation set.
 # See https://docs.ultralytics.com/guides/hyperparameter-tuning/ for tuning strategies.
 print("Training logistic regression classifier...")
-classifier = LogisticRegression(random_state=0, C=0.316, max_iter=1000, verbose=0) # Reduced verbosity
+classifier = LogisticRegression(random_state=0, C=0.316, max_iter=1000, verbose=0)  # Reduced verbosity
 classifier.fit(train_features, train_labels)
 
 # Evaluate the classifier on the test set
@@ -285,10 +291,10 @@ print(f"Linear probe accuracy = {accuracy:.3f}%")
 
 ## 🔗 See Also
 
--   **[OpenCLIP](https://github.com/mlfoundations/open_clip):** An open-source implementation offering various pre-trained CLIP models, including larger ones like ViT-G/14, trained on the LAION dataset.
--   **[Hugging Face Transformers `CLIPModel`](https://huggingface.co/docs/transformers/model_doc/clip):** Provides an implementation of CLIP integrated within the popular [Hugging Face](https://www.ultralytics.com/glossary/hugging-face) ecosystem, facilitating easier use with other Transformers models and tools.
--   **[Ultralytics YOLO Models](https://docs.ultralytics.com/models/):** Explore state-of-the-art object detection models like [YOLOv8](https://docs.ultralytics.com/models/yolov8/) and [YOLOv10](https://docs.ultralytics.com/models/yolov10/) which can be used alongside or as alternatives to CLIP for various vision tasks.
--   **[Multi-Modal Learning Glossary](https://www.ultralytics.com/glossary/multi-modal-learning):** Understand the broader context of models that process information from multiple modalities like text and images.
+- **[OpenCLIP](https://github.com/mlfoundations/open_clip):** An open-source implementation offering various pre-trained CLIP models, including larger ones like ViT-G/14, trained on the LAION dataset.
+- **[Hugging Face Transformers `CLIPModel`](https://huggingface.co/docs/transformers/model_doc/clip):** Provides an implementation of CLIP integrated within the popular [Hugging Face](https://www.ultralytics.com/glossary/hugging-face) ecosystem, facilitating easier use with other Transformers models and tools.
+- **[Ultralytics YOLO Models](https://docs.ultralytics.com/models/):** Explore state-of-the-art object detection models like [YOLOv8](https://docs.ultralytics.com/models/yolov8/) and [YOLOv10](https://docs.ultralytics.com/models/yolov10/) which can be used alongside or as alternatives to CLIP for various vision tasks.
+- **[Multi-Modal Learning Glossary](https://www.ultralytics.com/glossary/multi-modal-learning):** Understand the broader context of models that process information from multiple modalities like text and images.
 
 ## 🤝 Contributing
 
