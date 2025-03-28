@@ -20,7 +20,7 @@ To get started with CLIP, first install [PyTorch](https://pytorch.org/get-starte
 # Install PyTorch with CUDA support (adjust cudatoolkit version if needed)
 conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=11.0
 
-# Install required libraries (ftfy, regex, tqdm)
+# Install required libraries
 pip install ftfy regex tqdm
 
 # Install the CLIP package from GitHub
