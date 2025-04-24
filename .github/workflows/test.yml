@@ -15,22 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10, 3.11]
-        pytorch-version: [2.0.1, 2.1.2, 2.2.0]
-        include:
-          - python-version: 3.9
-            pytorch-version: 2.0.1
-            torchvision-version: 0.15.2
-          - python-version: 3.10
-            pytorch-version: 2.1.2
-            torchvision-version: 0.16.2
-          - python-version: 3.11
-            pytorch-version: 2.2.0
-            torchvision-version: 0.17.0
+        python-version: [3.11, 3.12]
+        pytorch-version: [2.5.0, 2.6.0]
 
     steps:
       - uses: conda-incubator/setup-miniconda@v4
-      - run: conda install -n test python=${{ matrix.python-version }} pytorch=${{ matrix.pytorch-version }} torchvision=${{ matrix.torchvision-version }} cpuonly -c pytorch
+      - run: conda install -n test python=${{ matrix.python-version }} pytorch=${{ matrix.pytorch-version }} torchvision cpuonly -c pytorch
       - uses: actions/checkout@v4
       - run: echo "$CONDA/envs/test/bin" >> $GITHUB_PATH
       - run: pip install pytest
