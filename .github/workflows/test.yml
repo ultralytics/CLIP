@@ -30,10 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install uv
-          uv pip install --system torch==${{ matrix.pytorch-version }} torchvision pytest --extra-index-url https://download.pytorch.org/whl/cpu
-      
-      - name: Install CLIP
-        run: uv pip install --system .
+          uv pip install --system -e . torch==${{ matrix.pytorch-version }} torchvision pytest --extra-index-url https://download.pytorch.org/whl/cpu
       
       - name: Run tests
         run: pytest
