@@ -17,12 +17,26 @@ jobs:
       matrix:
         python-version: [3.11, 3.12]
         pytorch-version: [2.5.0, 2.6.0]
-
+    
     steps:
-      - uses: conda-incubator/setup-miniconda@v3
-      - run: conda install -n test python=${{ matrix.python-version }} pytorch=${{ matrix.pytorch-version }} torchvision cpuonly -c pytorch
-      - uses: actions/checkout@v4
-      - run: echo "$CONDA/envs/test/bin" >> $GITHUB_PATH
-      - run: pip install pytest
-      - run: pip install .
-      - run: pytest
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install PyTorch ${{ matrix.pytorch-version }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch==${{ matrix.pytorch-version }} torchvision --index-url https://download.pytorch.org/whl/cpu
+      
+      - name: Install test dependencies
+        run: pip install pytest
+      
+      - name: Install CLIP
+        run: pip install .
+      
+      - name: Run tests
+        run: pytest
