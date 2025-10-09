@@ -16,23 +16,19 @@ jobs:
     strategy:
       matrix:
         python-version: [3.11, 3.12]
-        pytorch-version: [2.5.0, 2.6.0]
+        pytorch-version: [2.5.0, 2.8.0]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set up UV
-        uses: astral-sh/setup-uv@v3
+      - uses: astral-sh/setup-uv@v3
 
       - name: Install dependencies
-        run: |
-          uv pip install --system -e . torch==${{ matrix.pytorch-version }} torchvision pytest --extra-index-url https://download.pytorch.org/whl/cpu
+        run: uv pip install --system -e . torch==${{ matrix.pytorch-version }} torchvision pytest --extra-index-url https://download.pytorch.org/whl/cpu
 
       - name: Run tests
         run: uv run pytest
