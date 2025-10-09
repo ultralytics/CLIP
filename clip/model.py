@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from collections import OrderedDict
-from typing import Union
 
 import numpy as np
 import torch
@@ -312,7 +311,7 @@ class CLIP(nn.Module):
         embed_dim: int,
         # vision
         image_resolution: int,
-        vision_layers: Union[tuple[int, int, int, int], int],
+        vision_layers: tuple[int, int, int, int] | int,
         vision_width: int,
         vision_patch_size: int,
         # text
