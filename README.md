@@ -9,6 +9,8 @@ CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www
 [![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com/)
 [![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://reddit.com/r/ultralytics)
 
+
+
 ## 🖼️ Approach
 
 CLIP learns visual concepts from natural language supervision. It uses a [Vision Transformer (ViT)](https://www.ultralytics.com/glossary/vision-transformer-vit) or a ResNet as its image encoder and a text transformer for its text encoder. These encoders project images and text into a shared [embedding](https://www.ultralytics.com/glossary/embeddings) space. The model is trained using [contrastive learning](https://www.ultralytics.com/glossary/contrastive-learning) to maximize the cosine similarity between the embeddings of correct image-text pairs while minimizing the similarity for incorrect pairs within a batch.
