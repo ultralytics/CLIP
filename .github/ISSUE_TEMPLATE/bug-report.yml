@@ -2,7 +2,7 @@
 
 name: 🐛 Bug Report
 description: "Problems with the Ultralytics CLIP package"
-labels: [bug, triage]
+labels: [bug]
 type: "bug"
 body:
   - type: markdown
