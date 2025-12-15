@@ -94,6 +94,7 @@ class SimpleTokenizer:
         )
         self.sot_token_id = self.encoder["<|startoftext|>"]
         self.eot_token_id = self.encoder["<|endoftext|>"]
+        self.context_length = 77
 
     def bpe(self, token):
         """Apply byte pair encoding (BPE) to a given token and cache the result."""
@@ -172,5 +173,5 @@ class SimpleTokenizer:
             if len(tokens) > context_length:
                 tokens = tokens[:context_length]  # Truncate
                 tokens[-1] = self.eot_token_id
-            result[i, : len(tokens)] = torch.tensor(tokens)
+            result[i, : len(tokens)] = torch.as_tensor(tokens, dtype=torch.long)
         return result
