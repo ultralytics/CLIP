@@ -1,13 +1,14 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+from __future__ import annotations
 
 import gzip
 import html
 import os
-import torch
 from functools import lru_cache
 
 import ftfy
 import regex as re
+import torch
 
 
 @lru_cache
