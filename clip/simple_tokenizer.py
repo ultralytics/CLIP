@@ -152,11 +152,11 @@ class SimpleTokenizer:
         return bytearray([self.byte_decoder[c] for c in text]).decode("utf-8", errors="replace").replace("</w>", " ")
 
     def __call__(self, texts: str | list[str], context_length: int | None = None) -> torch.LongTensor:
-        """Returns the tokenized representation of given input string(s) Parameters.
+        """Returns the tokenized representation of given input string(s).
 
         Args:
-            texts: Union[str, list[str]] An input string or a list of input strings to tokenize.
-            context_length(int): The context length to use.
+            texts (Union[str, list[str]]): An input string or a list of input strings to tokenize.
+            context_length (int): The context length to use.
 
         Returns:
             (torch.Tensor): A two-dimensional tensor containing the resulting tokens, shape = [number of input strings,
