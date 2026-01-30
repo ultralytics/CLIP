@@ -36,4 +36,8 @@ jobs:
         run: uv pip install --system -e . torch==${{ matrix.pytorch-version }} torchvision pytest --extra-index-url https://download.pytorch.org/whl/cpu
 
       - name: Run tests
-        run: uv run pytest
+        uses: ultralytics/actions/retry@main
+        with:
+          retries: 2
+          retry_delay_seconds: 10
+          run: uv run pytest
