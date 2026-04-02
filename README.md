@@ -27,7 +27,7 @@ conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=11.0
 pip install ftfy regex tqdm
 
 # Install the CLIP package from GitHub
-pip install git+https://github.com/openai/CLIP.git
+pip install git+https://github.com/ultralytics/CLIP.git
 ```
 
 Remember to replace `cudatoolkit=11.0` with the appropriate CUDA version for your system or use `cpuonly` if installing on a machine without a GPU.
