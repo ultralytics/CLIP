@@ -17,7 +17,7 @@ CLIP learns visual concepts from natural language supervision. It uses a [Vision
 
 ## 🚀 Usage
 
-To get started with CLIP, first install [PyTorch](https://pytorch.org/get-started/locally/) (version 1.7.1 or later) and [TorchVision](https://pytorch.org/vision/stable/index.html), along with a few small dependencies. Then, install this repository as a Python package. If you have a machine with a [CUDA](https://developer.nvidia.com/cuda-zone)-enabled GPU, you can use the following commands:
+To get started with CLIP, first install [PyTorch](https://pytorch.org/get-started/locally/) (version 1.7.1 or later) and [TorchVision](https://docs.pytorch.org/vision/stable/index.html), along with a few small dependencies. Then, install this repository as a Python package. If you have a machine with a [CUDA](https://developer.nvidia.com/cuda)-enabled GPU, you can use the following commands:
 
 ```bash
 # Install PyTorch with CUDA support (adjust cudatoolkit version if needed)
@@ -311,7 +311,7 @@ Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributi
 
 Ultralytics provides two licensing options to accommodate different use cases:
 
-- **AGPL-3.0 License**: Ideal for students and enthusiasts, this [OSI-approved](https://opensource.org/license/agpl-v3) open-source license promotes collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/CLIP/blob/main/LICENSE) file for details.
+- **AGPL-3.0 License**: Ideal for students and enthusiasts, this [OSI-approved](https://opensource.org/license/agpl-3.0) open-source license promotes collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/CLIP/blob/main/LICENSE) file for details.
 - **Enterprise License**: Designed for commercial applications, this license allows for the integration of Ultralytics software and AI models into commercial products and services. For more information, visit [Ultralytics Licensing](https://www.ultralytics.com/license).
 
 ## 📬 Contact Us
@@ -326,7 +326,7 @@ If you encounter bugs, have feature requests, or wish to contribute, please visi
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
   <a href="https://twitter.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="3%" alt="Ultralytics Twitter"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
-  <a href="https://youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
+  <a href="https://www.youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
   <a href="https://www.tiktok.com/@ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="3%" alt="Ultralytics TikTok"></a>
   <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
