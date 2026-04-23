@@ -18,6 +18,7 @@ requires-python = ">=3.7"
 # Core dependencies needed for CLIP functionality
 dependencies = [
     "ftfy",      # Text preprocessing library for fixing Unicode errors
+    "packaging",  # Version parsing used for PyTorch compatibility checks
     "regex",     # Enhanced regular expression library
     "tqdm",      # Progress bar library for tracking long-running operations
     "torch",     # PyTorch deep learning framework
