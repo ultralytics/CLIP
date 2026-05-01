@@ -2,7 +2,7 @@
 
 [build-system]
 # Define the build system requirements for the project
-requires = ["setuptools>=70", "wheel"]
+requires = ["setuptools>=82.0.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
