@@ -2,7 +2,7 @@
 
 # CLIP
 
-CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/research/gpt-2) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/) [classification tasks](https://docs.ultralytics.com/tasks/classify/) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/blog/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/openai/clip/blob/master/notebooks/Interacting_with_CLIP.ipynb).
+CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/index/better-language-models/) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/) [classification tasks](https://docs.ultralytics.com/tasks/classify/) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/index/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/openai/clip/blob/master/notebooks/Interacting_with_CLIP.ipynb).
 
 [![Ultralytics Actions](https://github.com/ultralytics/CLIP/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/CLIP/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
@@ -143,7 +143,7 @@ The `model` object returned by `clip.load()` has the following methods:
 
 ### Zero-Shot Prediction on CIFAR-100
 
-This example demonstrates CLIP's zero-shot classification capability on the [CIFAR-100 dataset](https://www.cs.toronto.edu/~kriz/cifar.html). It predicts the label for an image without being explicitly trained on CIFAR-100 labels.
+This example demonstrates CLIP's zero-shot classification capability on the [CIFAR-100 dataset](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.CIFAR100.html). It predicts the label for an image without being explicitly trained on CIFAR-100 labels.
 
 ```python
 import os
@@ -221,7 +221,7 @@ This example highlights the use of `encode_image()` and `encode_text()` to get f
 
 ### Linear-Probe Evaluation
 
-This example demonstrates how to perform a linear-probe evaluation. We extract CLIP image features for a dataset ([CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html) again) and train a simple linear classifier (Logistic Regression from [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)) on top of these features. This is a common way to evaluate the quality of pre-trained features.
+This example demonstrates how to perform a linear-probe evaluation. We extract CLIP image features for a dataset ([CIFAR-100](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.CIFAR100.html) again) and train a simple linear classifier (Logistic Regression from [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)) on top of these features. This is a common way to evaluate the quality of pre-trained features.
 
 ```python
 import os
