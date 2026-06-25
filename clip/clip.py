@@ -214,9 +214,7 @@ def load(name: str, device: str | torch.device = None, jit: bool = False, downlo
     return model, _transform(model.input_resolution.item())
 
 
-def tokenize(
-    texts: str | list[str], context_length: int = 77, truncate: bool = False
-) -> torch.IntTensor:
+def tokenize(texts: str | list[str], context_length: int = 77, truncate: bool = False) -> torch.IntTensor:
     """Returns the tokenized representation of given input string(s).
 
     Parameters
