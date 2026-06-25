@@ -8,7 +8,6 @@ import urllib
 import warnings
 
 import torch
-from packaging import version
 from PIL import Image
 from torchvision.transforms import CenterCrop, Compose, Normalize, Resize, ToTensor
 from tqdm import tqdm
@@ -22,10 +21,6 @@ try:
     BICUBIC = InterpolationMode.BICUBIC
 except ImportError:
     BICUBIC = Image.BICUBIC
-
-
-if version.parse(torch.__version__) < version.parse("1.7.1"):
-    warnings.warn("PyTorch version 1.7.1 or higher is recommended")
 
 
 __all__ = ["available_models", "load", "tokenize"]
@@ -246,11 +241,7 @@ def tokenize(
     sot_token = _tokenizer.encoder["<|startoftext|>"]
     eot_token = _tokenizer.encoder["<|endoftext|>"]
     all_tokens = [[sot_token, *_tokenizer.encode(text), eot_token] for text in texts]
-    result = torch.zeros(
-        len(all_tokens),
-        context_length,
-        dtype=torch.long if version.parse(torch.__version__) < version.parse("1.8.0") else torch.int,
-    )
+    result = torch.zeros(len(all_tokens), context_length, dtype=torch.int)
 
     for i, tokens in enumerate(all_tokens):
         if len(tokens) > context_length:
