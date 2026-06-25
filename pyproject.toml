@@ -22,6 +22,7 @@ dependencies = [
     "tqdm",      # Progress bar library for tracking long-running operations
     "torch",     # PyTorch deep learning framework
     "torchvision",  # Computer vision library for PyTorch
+    "packaging",  # version parsing in clip.py (not pulled transitively by torch)
 ]
 
 [project.optional-dependencies]
