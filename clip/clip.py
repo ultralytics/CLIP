@@ -216,7 +216,7 @@ def load(name: str, device: str | torch.device = None, jit: bool = False, downlo
 
 def tokenize(
     texts: str | list[str], context_length: int = 77, truncate: bool = False
-) -> torch.IntTensor | torch.LongTensor:
+) -> torch.IntTensor:
     """Returns the tokenized representation of given input string(s).
 
     Parameters
@@ -232,8 +232,7 @@ def tokenize(
 
     Returns
     -------
-    A two-dimensional tensor containing the resulting tokens, shape = [number of input strings, context_length]. We
-    return LongTensor when torch version is <1.8.0, since older index_select requires indices to be long.
+    A two-dimensional tensor containing the resulting tokens, shape = [number of input strings, context_length].
     """
     if isinstance(texts, str):
         texts = [texts]
