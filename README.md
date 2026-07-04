@@ -2,7 +2,7 @@
 
 # CLIP
 
-CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/index/better-language-models/) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/) [classification tasks](https://docs.ultralytics.com/tasks/classify/) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/index/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/openai/clip/blob/master/notebooks/Interacting_with_CLIP.ipynb).
+CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/index/better-language-models/) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/) [classification tasks](https://docs.ultralytics.com/tasks/classify/) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/index/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/ultralytics/CLIP/blob/main/notebooks/Interacting_with_CLIP.ipynb).
 
 [![Ultralytics Actions](https://github.com/ultralytics/CLIP/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/CLIP/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
@@ -17,20 +17,14 @@ CLIP learns visual concepts from natural language supervision. It uses a [Vision
 
 ## 🚀 Usage
 
-To get started with CLIP, first install [PyTorch](https://pytorch.org/get-started/locally/) (version 1.7.1 or later) and [TorchVision](https://docs.pytorch.org/vision/stable/index.html), along with a few small dependencies. Then, install this repository as a Python package. If you have a machine with a [CUDA](https://developer.nvidia.com/cuda)-enabled GPU, you can use the following commands:
+To get started with CLIP, install this repository as a Python package. Its dependencies ([PyTorch](https://pytorch.org/get-started/locally/), [TorchVision](https://docs.pytorch.org/vision/stable/index.html), `ftfy`, `regex`, and `tqdm`) are installed automatically:
 
 ```bash
-# Install PyTorch with CUDA support (adjust cudatoolkit version if needed)
-conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=11.0
-
-# Install required libraries
-pip install ftfy regex tqdm
-
 # Install the CLIP package from GitHub
 pip install git+https://github.com/ultralytics/CLIP.git
 ```
 
-Remember to replace `cudatoolkit=11.0` with the appropriate CUDA version for your system or use `cpuonly` if installing on a machine without a GPU.
+To run on a [CUDA](https://developer.nvidia.com/cuda)-enabled GPU, install a PyTorch build matching your CUDA version first by following the [official PyTorch instructions](https://pytorch.org/get-started/locally/).
 
 Here's a basic example demonstrating how to use CLIP to match an image with text descriptions:
 
@@ -108,7 +102,7 @@ The `clip` module provides the following core functions:
   - `text` (Union[str, List[str]]): The text input(s) to tokenize. Can be a single string or a list of strings.
   - `context_length` (int, optional): The fixed sequence length for the model. Defaults to 77.
   - `truncate` (bool, optional): If `True`, truncates the text to fit the `context_length`. Defaults to `False`, raising an error if text exceeds length.
-- **Returns:** `torch.LongTensor` - A tensor of shape `(N, context_length)` containing the tokenized sequences, where `N` is the number of input strings.
+- **Returns:** `torch.IntTensor` - A tensor of shape `(N, context_length)` containing the tokenized sequences, where `N` is the number of input strings.
 
 ---
 
