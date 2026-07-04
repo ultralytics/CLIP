@@ -33,10 +33,10 @@ After opening a PR:
 ## Commands
 
 ```bash
-uv pip install -e ".[dev]"       # install package + pytest (never bare pip install)
-uv run pytest                    # run all tests exactly as CI does (no coverage step in CI)
-uv run pytest "tests/test_consistency.py::test_consistency[ViT-B/32]"  # run one parametrized case
-uvx codespell                    # spelling check; config in [tool.codespell] in pyproject.toml
+uv pip install -e ".[dev]"                                            # install package + pytest (never bare pip install)
+uv run pytest                                                         # run all tests exactly as CI does (no coverage step in CI)
+uv run pytest "tests/test_consistency.py::test_consistency[ViT-B/32]" # run one parametrized case
+uvx codespell                                                         # spelling check; config in [tool.codespell] in pyproject.toml
 ```
 
 - CI (`.github/workflows/ci.yml`) runs on push/PR to `main` and daily at 03:00 UTC, on a matrix of Python {3.9, 3.13} × PyTorch {2.5.0, 2.8.0} using CPU wheels (`--extra-index-url https://download.pytorch.org/whl/cpu`), and retries `uv run pytest` up to 2 times via `ultralytics/actions/retry`.
