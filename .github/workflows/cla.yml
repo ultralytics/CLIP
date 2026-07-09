@@ -1,9 +1,9 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 # Ultralytics Contributor License Agreement (CLA) action https://docs.ultralytics.com/help/CLA
 # This workflow automatically requests Pull Requests (PR) authors to sign the Ultralytics CLA before PRs can be merged
 
 name: CLA Assistant
-concurrency:
-  group: cla-${{ github.event.pull_request.number || github.event.issue.number }}
 on:
   issue_comment:
     types:
@@ -20,12 +20,13 @@ permissions:
 
 jobs:
   CLA:
-    if: github.repository == 'ultralytics/CLIP' && (github.event_name != 'issue_comment' || github.event.issue.pull_request)
+    if: github.repository == 'ultralytics/CLIP' && (github.event_name == 'pull_request_target' || (github.event.issue.pull_request && (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I sign the CLA')))
+    concurrency:
+      group: cla-${{ github.event.pull_request.number || github.event.issue.number }}
     runs-on: ubuntu-latest
     steps:
       - name: CLA Assistant
-        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I sign the CLA') || github.event_name == 'pull_request_target'
-        uses: ultralytics/actions/cla@43945a7d2364fc943becb0245a4edcb05e49427f
+        uses: ultralytics/actions/cla@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           cla-token: ${{ secrets._GITHUB_TOKEN }}
