@@ -29,6 +29,8 @@ To run on a [CUDA](https://developer.nvidia.com/cuda)-enabled GPU, install a PyT
 Here's a basic example demonstrating how to use CLIP to match an image with text descriptions:
 
 ```python
+import sys
+
 import torch
 from PIL import Image
 
@@ -48,10 +50,10 @@ try:
     image = preprocess(Image.open(image_path)).unsqueeze(0).to(device)
 except FileNotFoundError:
     print(f"Error: Image file not found at {image_path}")
-    exit()
+    sys.exit()
 except Exception as e:
     print(f"Error processing image: {e}")
-    exit()
+    sys.exit()
 
 
 # Prepare text inputs by tokenizing them
@@ -141,6 +143,7 @@ This example demonstrates CLIP's zero-shot classification capability on the [CIF
 
 ```python
 import os
+import sys
 
 import torch
 from torchvision.datasets import CIFAR100
@@ -160,7 +163,7 @@ try:
     cifar100 = CIFAR100(root=cache_dir, download=True, train=False)
 except Exception as e:
     print(f"Error downloading or loading CIFAR100 dataset: {e}")
-    exit()
+    sys.exit()
 
 # Select an image from the dataset (e.g., index 3637)
 image_index = 3637
@@ -169,7 +172,7 @@ try:
     print(f"Selected image index: {image_index}, Class ID: {class_id}, Class Name: {cifar100.classes[class_id]}")
 except IndexError:
     print(f"Error: Index {image_index} is out of bounds for the dataset.")
-    exit()
+    sys.exit()
 
 # Preprocess the image and create text prompts
 image_input = preprocess(image).unsqueeze(0).to(device)
@@ -219,6 +222,7 @@ This example demonstrates how to perform a linear-probe evaluation. We extract C
 
 ```python
 import os
+import sys
 
 import numpy as np
 import torch
@@ -243,7 +247,7 @@ try:
     test_dataset = CIFAR100(root=cache_dir, download=True, train=False, transform=preprocess)
 except Exception as e:
     print(f"Error downloading or loading CIFAR100 dataset: {e}")
-    exit()
+    sys.exit()
 
 
 # Function to extract features from a dataset
