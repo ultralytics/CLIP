@@ -2,6 +2,8 @@
 
 This file provides guidance to AI coding agents (Claude Code, etc.) when working with code in this repository. CLAUDE.md is a symlink to this file.
 
+Ultralytics-maintained fork of OpenAI's [CLIP](https://github.com/openai/CLIP) (AGPL-3.0), a neural network trained on image-text pairs that predicts the most relevant caption for an image without task-specific training. The repository ships the small `clip` inference package, the pretrained-checkpoint loader, and the notebooks and model card that document zero-shot use.
+
 ## Core Principles (CRITICAL)
 
 **Less is more. The simplest solution is the best solution.** The action hierarchy for every change: **Delete > Replace > Add**.
