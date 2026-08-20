@@ -1,13 +1,13 @@
-<a href="https://www.ultralytics.com/"><img src="https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg" width="320" alt="Ultralytics logo"></a>
+<a href="https://www.ultralytics.com"><img src="https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg" width="320" alt="Ultralytics logo"></a>
 
 # CLIP
 
-CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/index/better-language-models/) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet/) [classification tasks](https://docs.ultralytics.com/tasks/classify/) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/index/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/ultralytics/CLIP/blob/main/notebooks/Interacting_with_CLIP.ipynb).
+CLIP (Contrastive Language-Image Pre-Training) is a [neural network](https://www.ultralytics.com/glossary/neural-network-nn) trained on a diverse set of (image, text) pairs sourced from the internet. Developed by OpenAI, it can be instructed using [natural language](https://www.ultralytics.com/glossary/natural-language-processing-nlp) to predict the most relevant text snippet for a given image, without needing task-specific training data. This capability mirrors the [zero-shot learning](https://www.ultralytics.com/glossary/zero-shot-learning) performance seen in models like [GPT-2](https://openai.com/index/better-language-models/) and [GPT-3](https://www.ultralytics.com/glossary/gpt-3). Notably, CLIP matches the performance of the original [ResNet50](https://arxiv.org/abs/1512.03385) on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet) [classification tasks](https://docs.ultralytics.com/tasks/classify) "zero-shot," meaning it achieves this without using any of the 1.28 million labeled examples from the ImageNet training set, thereby overcoming significant challenges in traditional [computer vision](https://www.ultralytics.com/glossary/computer-vision-cv). For more details, see the [OpenAI blog post](https://openai.com/index/clip/), the original [research paper](https://arxiv.org/abs/2103.00020), the [model card](model-card.md), and try our [interactive Colab notebook](https://colab.research.google.com/github/ultralytics/CLIP/blob/main/notebooks/Interacting_with_CLIP.ipynb).
 
 [![Ultralytics Actions](https://github.com/ultralytics/CLIP/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/CLIP/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
-[![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com/)
-[![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://reddit.com/r/ultralytics)
+[![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com)
+[![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://www.reddit.com/r/ultralytics/)
 
 ## 🖼️ Approach
 
@@ -274,7 +274,7 @@ test_features, test_labels = get_features(test_dataset, model, device)
 
 # Train a logistic regression classifier
 # Note: The hyperparameter C should ideally be tuned using a validation set.
-# See https://docs.ultralytics.com/guides/hyperparameter-tuning/ for tuning strategies.
+# See https://docs.ultralytics.com/guides/hyperparameter-tuning for tuning strategies.
 print("Training logistic regression classifier...")
 classifier = LogisticRegression(random_state=0, C=0.316, max_iter=1000, verbose=0)  # Reduced verbosity
 classifier.fit(train_features, train_labels)
@@ -288,20 +288,20 @@ print(f"Linear probe accuracy = {accuracy:.3f}%")
 # Expected output might be around 70-80% accuracy for ViT-B/32 on CIFAR-100
 ```
 
-**Note:** The regularization strength `C` is a crucial [hyperparameter](https://www.ultralytics.com/glossary/hyperparameter-tuning). Its optimal value should be found through techniques like [cross-validation](https://www.ultralytics.com/glossary/cross-validation) or using a dedicated validation split, rather than using a fixed value as shown here for simplicity. Refer to our [Hyperparameter Tuning Guide](https://docs.ultralytics.com/guides/hyperparameter-tuning/) for more details.
+**Note:** The regularization strength `C` is a crucial [hyperparameter](https://www.ultralytics.com/glossary/hyperparameter-tuning). Its optimal value should be found through techniques like [cross-validation](https://www.ultralytics.com/glossary/cross-validation) or using a dedicated validation split, rather than using a fixed value as shown here for simplicity. Refer to our [Hyperparameter Tuning Guide](https://docs.ultralytics.com/guides/hyperparameter-tuning) for more details.
 
 ## 🔗 See Also
 
 - **[OpenCLIP](https://github.com/mlfoundations/open_clip):** An open-source implementation offering various pre-trained CLIP models, including larger ones like ViT-G/14, trained on the LAION dataset.
 - **[Hugging Face Transformers `CLIPModel`](https://huggingface.co/docs/transformers/model_doc/clip):** Provides an implementation of CLIP integrated within the popular [Hugging Face](https://www.ultralytics.com/glossary/hugging-face) ecosystem, facilitating easier use with other Transformers models and tools.
-- **[Ultralytics YOLO Models](https://docs.ultralytics.com/models/):** Explore state-of-the-art [object detection](https://www.ultralytics.com/glossary/object-detection) models like [YOLO11](https://docs.ultralytics.com/models/yolo11/) which can be used alongside or as alternatives to CLIP for various vision tasks.
+- **[Ultralytics YOLO Models](https://docs.ultralytics.com/models):** Explore state-of-the-art [object detection](https://www.ultralytics.com/glossary/object-detection) models like [YOLO11](https://docs.ultralytics.com/models/yolo11) which can be used alongside or as alternatives to CLIP for various vision tasks.
 - **[Multi-Modal Learning Glossary](https://www.ultralytics.com/glossary/multi-modal-learning):** Understand the broader context of models that process information from multiple modalities like text and images.
 
 ## 💡 Contribute
 
 Contributions are the lifeblood of the [open-source](https://www.ultralytics.com/blog/tips-to-start-contributing-to-ultralytics-open-source-projects) community, and we greatly appreciate your input! Whether it's bug fixes, feature suggestions, or documentation improvements, every contribution helps.
 
-Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing/) for detailed instructions on how to get involved. We also encourage you to fill out our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to share your feedback. Thank you 🙏 to everyone who contributes!
+Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing) for detailed instructions on how to get involved. We also encourage you to fill out our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to share your feedback. Thank you 🙏 to everyone who contributes!
 
 [![Ultralytics open-source contributors](https://raw.githubusercontent.com/ultralytics/assets/main/im/image-contributors.png)](https://github.com/ultralytics/ultralytics/graphs/contributors)
 

@@ -1,4 +1,4 @@
-<a href="https://www.ultralytics.com/"><img src="https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg" width="320" alt="Ultralytics logo"></a>
+<a href="https://www.ultralytics.com"><img src="https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg" width="320" alt="Ultralytics logo"></a>
 
 # Model Card: CLIP
 
@@ -6,8 +6,8 @@ Inspired by [Model Cards for Model Reporting (Mitchell et al.)](https://arxiv.or
 
 [![Ultralytics Actions](https://github.com/ultralytics/CLIP/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/CLIP/actions/workflows/format.yml)
 [![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)
-[![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com/)
-[![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://reddit.com/r/ultralytics)
+[![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com)
+[![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://www.reddit.com/r/ultralytics/)
 
 ## 📋 Model Details
 
@@ -31,7 +31,7 @@ Please see the paper linked below for further details about their specification.
 
 ### Documents
 
-- [Blog Post](https://openai.com/blog/clip/)
+- [Blog Post](https://openai.com/index/clip/)
 - [CLIP Paper](https://arxiv.org/abs/2103.00020)
 
 ## 🎯 Model Use
@@ -122,7 +122,7 @@ Please use [this Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfRGWV17m
 
 Contributions are the lifeblood of the [open-source](https://www.ultralytics.com/blog/tips-to-start-contributing-to-ultralytics-open-source-projects) community, and we greatly appreciate your input! Whether it's bug fixes, feature suggestions, or documentation improvements, every contribution helps.
 
-Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing/) for detailed instructions on how to get involved. We also encourage you to fill out our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to share your feedback. Thank you 🙏 to everyone who contributes!
+Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing) for detailed instructions on how to get involved. We also encourage you to fill out our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to share your feedback. Thank you 🙏 to everyone who contributes!
 
 [![Ultralytics open-source contributors](https://raw.githubusercontent.com/ultralytics/assets/main/im/image-contributors.png)](https://github.com/ultralytics/ultralytics/graphs/contributors)
 
