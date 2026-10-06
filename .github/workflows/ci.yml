@@ -38,4 +38,4 @@ jobs:
         with:
           retries: 2
           retry_delay_seconds: 10
-          run: uv run pytest
+          run: pytest
